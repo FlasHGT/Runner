@@ -15,15 +15,20 @@ public class ObstacleSpawner : MonoBehaviour
 	private float minX;
 	private float maxX;
 
+	public void ManualStart()
+	{
+		PoolManager.Instance.CreatePool(prefab, obstaclesOnScreen);
+	}
+
 	// Start is called before the first frame update
-	void Start()
+	private void Start()
     {
 		startSpawnY = currentSpawnY;
-		PoolManager.Instance.CreatePool(prefab, obstaclesOnScreen);
+		ManualStart();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if(currentSpawnY - obstaclesOnScreen * distanceBetweenObstacles < Player.Instance.transform.position.y - safezone)
 		{

@@ -2,23 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 
+	public bool gamePaused = false;
+
 	public float realTimeSpeed;
 
-	public ObstacleSpawner obstacleSpawner;
-	public GameObject player = null;
-	public GameObject wall = null;
+	[SerializeField] ObstacleSpawner obstacleSpawner;
+	[SerializeField] GameObject player = null;
+	[SerializeField] GameObject wall = null;
+	[SerializeField] GameObject loseScreen = null;
+
+	public bool retryButtonPressed = false;
 
 	public void ResetGame()
 	{
-		player.transform.position = Vector3.zero;
-		wall.transform.position = Vector3.zero;
-		Camera.main.transform.position = new Vector3(0f, 0f, -10f);
-		obstacleSpawner.currentSpawnY = obstacleSpawner.startSpawnY;
+		gamePaused = true;
+		loseScreen.SetActive(true);
+
+		if(retryButtonPressed)
+		{
+			gamePaused = false;
+			int i = SceneManager.GetActiveScene().buildIndex;
+			SceneManager.LoadScene(i);
+			retryButtonPressed = false;
+			loseScreen.SetActive(false);
+		}
+	}
+
+	public void RetryButtonPressed()
+	{
+		retryButtonPressed = true;
+	}
+
+	public void QuitButtonPressed()
+	{
+
 	}
 
 	private void Awake()
@@ -31,6 +54,11 @@ public class GameManager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (gamePaused)
+		{
+			ResetGame();
+		}
+
 		realTimeSpeed = Player.Instance.speed * Time.fixedDeltaTime;
 	}
 }
