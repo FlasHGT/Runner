@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-	[SerializeField]float removeTime = 25f;
+	[SerializeField] float removeTime = 25f;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if(collision.gameObject.CompareTag("Player"))
+		if (collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
 		{
 			transform.gameObject.SetActive(false);
-			CameraController.Instance.time += removeTime;
+			if(Player.Instance.armorCount == 0)
+			{
+				CameraController.Instance.time += removeTime;
+			}else
+			{
+				Player.Instance.armorCount -= 1;
+			}
 		}
 	}
 }

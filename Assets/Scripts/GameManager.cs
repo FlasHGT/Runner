@@ -12,10 +12,9 @@ public class GameManager : MonoBehaviour
 
 	public float realTimeSpeed;
 
-	[SerializeField] ObstacleSpawner obstacleSpawner;
-	[SerializeField] GameObject player = null;
-	[SerializeField] GameObject wall = null;
+	[SerializeField] Spawner obstacleSpawner;
 	[SerializeField] GameObject loseScreen = null;
+	[SerializeField] Text scoreText = null;
 
 	public bool retryButtonPressed = false;
 
@@ -54,6 +53,8 @@ public class GameManager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		scoreText.text = "Score: " + Player.Instance.transform.position.y.ToString("f0");
+
 		if (gamePaused)
 		{
 			ResetGame();
