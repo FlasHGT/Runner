@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 	public static Player Instance;
 
 	public float speed = 2f;
+	public float health = 10f;
 
 	public int armorCount = 0;
 
@@ -20,12 +21,31 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	private void Start()
+	{
+		
+	}
+
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
+		if(health <= 0f)
+		{
+			GameManager.Instance.ResetGame();
+		}
+
 		if(!GameManager.Instance.gamePaused)
 		{
 			Move();
+			RegenerateHealth();
+		}
+	}
+
+	private void RegenerateHealth()
+	{
+		if (health < 10f)
+		{
+			health += 0.25f * Time.deltaTime;
 		}
 	}
 

@@ -34,10 +34,6 @@ public class CameraController : MonoBehaviour
 	{
 		if (!GameManager.Instance.gamePaused)
 		{
-			if (Camera.main.orthographicSize == loseCameraSize)
-			{
-				GameManager.Instance.ResetGame();
-			}
 			MoveCamera();
 			ChangeCameraSize();
 		}
@@ -49,6 +45,12 @@ public class CameraController : MonoBehaviour
 		{
 			time = -15f;
 		}
+
+		if(time > 100f)
+		{
+			time = 100f;
+		}
+
 		Camera.main.orthographicSize = Mathf.Lerp(maxCameraSize, minCameraSize, time * Time.fixedDeltaTime * 0.5f);
 	}
 

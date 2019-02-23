@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] Spawner obstacleSpawner;
 	[SerializeField] GameObject loseScreen = null;
 	[SerializeField] Text scoreText = null;
+	[SerializeField] Text healthText = null;
+	[SerializeField] Text armorText = null;
 
 	public bool retryButtonPressed = false;
 
@@ -54,6 +56,8 @@ public class GameManager : MonoBehaviour
 	private void FixedUpdate()
 	{
 		scoreText.text = "Score: " + Player.Instance.transform.position.y.ToString("f0");
+		armorText.text = "Armor: " + Player.Instance.armorCount;
+		healthText.text = "Health: " + Player.Instance.health.ToString("f2");
 
 		if (gamePaused)
 		{

@@ -13,6 +13,7 @@ public class Obstacle : MonoBehaviour
 			transform.gameObject.SetActive(false);
 			if(Player.Instance.armorCount == 0)
 			{
+				Player.Instance.health -= 2f;
 				CameraController.Instance.time += removeTime;
 			}else
 			{
