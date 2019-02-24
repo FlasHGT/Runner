@@ -831,7 +831,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Health: 10'
+  m_Text: 'Health: 10.00'
 --- !u!222 &1767045834
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1126,11 +1126,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2166294106213800113, guid: 9606952ae87757f4f9070d2b53744f2d,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 2166294106213800119, guid: 9606952ae87757f4f9070d2b53744f2d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1139,7 +1134,7 @@ PrefabInstance:
     - target: {fileID: 2166294106213800119, guid: 9606952ae87757f4f9070d2b53744f2d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 2166294106213800119, guid: 9606952ae87757f4f9070d2b53744f2d,
         type: 3}
@@ -1184,16 +1179,6 @@ PrefabInstance:
     - target: {fileID: 2166294106213800119, guid: 9606952ae87757f4f9070d2b53744f2d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2166294106213800118, guid: 9606952ae87757f4f9070d2b53744f2d,
-        type: 3}
-      propertyPath: wall
-      value: 
-      objectReference: {fileID: 656755447}
-    - target: {fileID: 2166294106213800118, guid: 9606952ae87757f4f9070d2b53744f2d,
-        type: 3}
-      propertyPath: mobileInput
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
