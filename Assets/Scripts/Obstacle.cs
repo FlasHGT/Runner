@@ -21,7 +21,10 @@ public class Obstacle : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		transform.Rotate(new Vector3(0f, 0f, rotateSpeed * Time.fixedDeltaTime), Space.Self);
+		if(!GameManager.Instance.gamePaused)
+		{
+			transform.Rotate(new Vector3(0f, 0f, rotateSpeed * Time.fixedDeltaTime), Space.Self);
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

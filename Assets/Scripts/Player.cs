@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
 
 	private void Move()
 	{
-		transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+		transform.position = new Vector3(transform.position.x, transform.position.y, -3f);
 		transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
 		if(mobileInput)
