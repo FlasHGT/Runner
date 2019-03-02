@@ -96,9 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumableType: 2
   needsReset: 1
-  armorSprite: {fileID: 21300000, guid: 5a608d964db725744818fd4b4f1738ce, type: 3}
-  invincibleSprite: {fileID: 21300000, guid: beca6bd99440aea4e9b89f680c7cdc27, type: 3}
-  resetCameraSprite: {fileID: 21300000, guid: 2a5cf7eebea64fc40955e9200c0c93a7, type: 3}
+  armorSprite: {fileID: 21300000, guid: 18a706d2f38bb3045a6f0d813afa97d2, type: 3}
+  invincibleSprite: {fileID: 21300000, guid: db00edb55e4812f4e91e49d189a18f5c, type: 3}
+  resetCameraSprite: {fileID: 21300000, guid: a8f0df402696b184aa2b8645a5b39582, type: 3}
 --- !u!61 &3331379541271187323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.01}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -123,7 +123,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.67, y: 0.68}
   m_EdgeRadius: 0
 --- !u!50 &3331379541271187322
 Rigidbody2D:

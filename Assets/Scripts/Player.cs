@@ -45,12 +45,15 @@ public class Player : MonoBehaviour
 	{
 		if (health < 10f)
 		{
-			health += 0.25f * Time.deltaTime;
+			health += 0.25f * Time.fixedDeltaTime;
 		}
 	}
 
 	private void Move()
 	{
+		transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+		transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
 		if(mobileInput)
 		{
 			if (Input.touchCount > 0)
@@ -60,10 +63,12 @@ public class Player : MonoBehaviour
 
 				if (touchPos.x > 0)
 				{
+					transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
 					transform.Translate(GameManager.Instance.realTimeSpeed, 0f, 0f);
 				}
 				else if (touchPos.x < 0)
 				{
+					transform.localRotation = Quaternion.Euler(0f, -45f, 0f);
 					transform.Translate(-GameManager.Instance.realTimeSpeed, 0f, 0f);
 				}
 			}
@@ -72,7 +77,14 @@ public class Player : MonoBehaviour
 		}else
 		{
 			float moveHorizontal = Input.GetAxis("Horizontal");
-
+			if(moveHorizontal > 0)
+			{
+				transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
+			}
+			else if(moveHorizontal < 0)
+			{
+				transform.localRotation = Quaternion.Euler(0f, -45f, 0f);
+			}
 			transform.Translate(moveHorizontal * GameManager.Instance.realTimeSpeed, GameManager.Instance.realTimeSpeed, 0f);
 		}
 	}
