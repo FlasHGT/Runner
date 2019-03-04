@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 	public float speed = 2f;
 	public float health = 10f;
 
-	public int armorCount = 0;
+	public float armorCount = 10f;
 
 	public bool mobileInput = false;
 	public bool isInvincible = false;
@@ -37,15 +37,6 @@ public class Player : MonoBehaviour
 		if(!GameManager.Instance.gamePaused)
 		{
 			Move();
-			RegenerateHealth();
-		}
-	}
-
-	private void RegenerateHealth()
-	{
-		if (health < 10f)
-		{
-			health += 0.25f * Time.fixedDeltaTime;
 		}
 	}
 
@@ -107,14 +98,9 @@ public class Player : MonoBehaviour
 				StartCoroutine(Invincible());
 				consumable.needsReset = true;
 				break;
-			case ConsumableType.ResetCamera:
-				collision.gameObject.SetActive(false);
-				CameraController.Instance.time = -15f;
-				consumable.needsReset = true;
-				break;
 			case ConsumableType.AddArmor:
 				collision.gameObject.SetActive(false);
-				armorCount = 3;
+				armorCount = 10f;
 				consumable.needsReset = true;
 				break;
 			default:

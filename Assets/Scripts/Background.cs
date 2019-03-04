@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-	private float parralax = 2f;
+	public float parralax = 2f;
 
 	private MeshRenderer mr = null;
 	private Material background = null;

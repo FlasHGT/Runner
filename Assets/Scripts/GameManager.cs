@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,9 +15,9 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] Spawner obstacleSpawner;
 	[SerializeField] GameObject loseScreen = null;
-	[SerializeField] Text scoreText = null;
-	[SerializeField] Text healthText = null;
-	[SerializeField] Text armorText = null;
+	[SerializeField] TextMeshProUGUI scoreText = null;
+	[SerializeField] Image healthImage = null;
+	[SerializeField] Image armorImage = null;
 
 	public bool retryButtonPressed = false;
 
@@ -56,8 +57,8 @@ public class GameManager : MonoBehaviour
 	private void FixedUpdate()
 	{
 		scoreText.text = "Score: " + Player.Instance.transform.position.y.ToString("f0");
-		armorText.text = "Armor: " + Player.Instance.armorCount;
-		healthText.text = "Health: " + Player.Instance.health.ToString("f2");
+		armorImage.fillAmount = Player.Instance.armorCount / 10f;
+		healthImage.fillAmount = Player.Instance.health / 10f;
 
 		if (gamePaused)
 		{

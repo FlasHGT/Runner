@@ -16,7 +16,7 @@ public class Wall : MonoBehaviour
     {
 		if(!GameManager.Instance.gamePaused)
 		{
-			transform.localScale = new Vector3(Camera.main.orthographicSize * 2f * Screen.width / Screen.height - 1, Camera.main.orthographicSize * 2f * Screen.height / Screen.height, 1f);
+			transform.localScale = new Vector3(Camera.main.orthographicSize * 2f * Screen.width / Screen.height - 2, Camera.main.orthographicSize * 2f * Screen.height / Screen.height, 1f);
 
 			transform.Translate(0f, GameManager.Instance.realTimeSpeed, 0f);
 		}

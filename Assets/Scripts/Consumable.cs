@@ -10,14 +10,13 @@ public class Consumable : MonoBehaviour
 
 	[SerializeField] Sprite armorSprite = null;
 	[SerializeField] Sprite invincibleSprite = null;
-	[SerializeField] Sprite resetCameraSprite = null;
 
 	private SpriteRenderer currentRenderer = null;
 	private BoxCollider2D boxCollider = null;
 
 	private void Start()
 	{
-		consumableType = (ConsumableType)Random.Range(0, 2);
+		consumableType = (ConsumableType)Random.Range(0, (float)ConsumableType.COUNT);
 
 		currentRenderer = GetComponent<SpriteRenderer>();
 		boxCollider = GetComponent<BoxCollider2D>();
@@ -40,11 +39,6 @@ public class Consumable : MonoBehaviour
 					boxCollider.size = new Vector2(0.43f, 0.54f);
 					boxCollider.offset = new Vector2(-0.04f, 0.09f);
 					break;
-				case ConsumableType.ResetCamera:
-					currentRenderer.sprite = resetCameraSprite;
-					boxCollider.size = new Vector2(0.44f, 0.39f);
-					boxCollider.offset = new Vector2(0f, 0.03f);
-					break;
 				default:
 					Debug.Log("Not a consumable");
 					break;
@@ -58,7 +52,6 @@ public class Consumable : MonoBehaviour
 public enum ConsumableType
 {
 	Invincible,
-	ResetCamera,
 	AddArmor,
 	COUNT
 }
