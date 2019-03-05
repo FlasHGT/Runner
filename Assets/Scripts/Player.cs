@@ -29,9 +29,17 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
+		if(transform.position.x >= 21f || transform.position.x <= -21f)
+		{
+			GameManager.Instance.ResetGame();	
+		}
+
 		if(health <= 0f)
 		{
 			GameManager.Instance.ResetGame();
+		}else if(health > 10f)
+		{
+			health = 10f;
 		}
 
 		if(!GameManager.Instance.gamePaused)
@@ -101,6 +109,11 @@ public class Player : MonoBehaviour
 			case ConsumableType.AddArmor:
 				collision.gameObject.SetActive(false);
 				armorCount = 10f;
+				consumable.needsReset = true;
+				break;
+			case ConsumableType.AddHP:
+				collision.gameObject.SetActive(false);
+				health += 5f;
 				consumable.needsReset = true;
 				break;
 			default:

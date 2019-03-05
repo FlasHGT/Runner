@@ -98,7 +98,7 @@ MonoBehaviour:
   needsReset: 1
   armorSprite: {fileID: 21300000, guid: 18a706d2f38bb3045a6f0d813afa97d2, type: 3}
   invincibleSprite: {fileID: 21300000, guid: db00edb55e4812f4e91e49d189a18f5c, type: 3}
-  resetCameraSprite: {fileID: 21300000, guid: a8f0df402696b184aa2b8645a5b39582, type: 3}
+  HPSprite: {fileID: 21300000, guid: 7f24813fe4cbe58479ca264d6a63fb45, type: 3}
 --- !u!61 &3331379541271187323
 BoxCollider2D:
   m_ObjectHideFlags: 0
