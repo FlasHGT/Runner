@@ -29,23 +29,30 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
-		if(transform.position.x >= 21f || transform.position.x <= -21f)
+		if (transform.position.x >= 21f || transform.position.x <= -21f)
 		{
-			GameManager.Instance.ResetGame();	
+			Death();
+			GameManager.Instance.ResetGame();
 		}
 
 		if(health <= 0f)
 		{
+			Death();
 			GameManager.Instance.ResetGame();
 		}else if(health > 10f)
 		{
 			health = 10f;
 		}
 
-		if(!GameManager.Instance.gamePaused)
+		if (!GameManager.Instance.gamePaused)
 		{
 			Move();
 		}
+	}
+
+	private void Death()
+	{
+		AudioManager.Instance.PlayDeathClip();
 	}
 
 	private void Move()
@@ -88,14 +95,6 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerExit2D(Collider2D collision)
-	{
-		if (collision.gameObject.CompareTag("Wall"))
-		{
-			GameManager.Instance.ResetGame();
-		}
-	}
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		Consumable consumable = collision.GetComponent<Consumable>();
@@ -125,7 +124,7 @@ public class Player : MonoBehaviour
 	IEnumerator Invincible ()
 	{
 		isInvincible = true;
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(5);
 		isInvincible = false;
 	}
 }

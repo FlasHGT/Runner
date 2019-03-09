@@ -7,12 +7,34 @@ public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance = null;
 
-	public AudioSource buttonAudioSource;
-	public AudioSource musicAudioSource;
+	public AudioSource buttonAudioSource = null;
+	public AudioSource musicAudioSource = null;
+	public AudioSource afxAudioSource = null;
 
+	[SerializeField] AudioClip deathClip = null;
+	[SerializeField] AudioClip armorHitClip = null;
+	[SerializeField] AudioClip healthHitClip = null;
 	[SerializeField] AudioClip[] mainMenuAudioClips = null;
 
 	private bool songNeeded = true;
+
+	public void PlayDeathClip()
+	{
+		afxAudioSource.clip = deathClip;
+		afxAudioSource.Play();
+	}
+
+	public void PlayArmorHitClip()
+	{
+		afxAudioSource.clip = armorHitClip;
+		afxAudioSource.Play();
+	}
+
+	public void PlayHealthHitClip()
+	{
+		afxAudioSource.clip = healthHitClip;
+		afxAudioSource.Play();
+	}
 
 	private void Awake()
 	{

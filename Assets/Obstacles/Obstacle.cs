@@ -35,9 +35,11 @@ public class Obstacle : MonoBehaviour
 			if(Player.Instance.armorCount == 0)
 			{
 				Player.Instance.health -= 2f;
+				AudioManager.Instance.PlayHealthHitClip();
 			}else
 			{
 				Player.Instance.armorCount -= 2.5f;
+				AudioManager.Instance.PlayArmorHitClip();
 			}
 		}
 	}
