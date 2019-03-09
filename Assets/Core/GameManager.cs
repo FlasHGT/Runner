@@ -13,11 +13,15 @@ public class GameManager : MonoBehaviour
 
 	public float realTimeSpeed;
 
-	[SerializeField] Spawner obstacleSpawner;
-	[SerializeField] GameObject loseScreen = null;
+	[Header("Main Menu")]
+	[SerializeField] GameObject defaultScreen = null;
+
+	[Header ("Game")]
 	[SerializeField] Text scoreText = null;
 	[SerializeField] Image healthImage = null;
 	[SerializeField] Image armorImage = null;
+	[SerializeField] Spawner obstacleSpawner = null;
+	[SerializeField] GameObject loseScreen = null;
 
 	public bool retryButtonPressed = false;
 
@@ -26,7 +30,7 @@ public class GameManager : MonoBehaviour
 		gamePaused = true;
 		loseScreen.SetActive(true);
 
-		if(retryButtonPressed)
+		if (retryButtonPressed)
 		{
 			gamePaused = false;
 			int i = SceneManager.GetActiveScene().buildIndex;
@@ -43,7 +47,24 @@ public class GameManager : MonoBehaviour
 
 	public void QuitButtonPressed()
 	{
+		Debug.Log("Application quit");
+		Application.Quit();
+	}
 
+	public void MainMenuButtonPressed()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+	}
+
+	public void StartButtonPressed()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
+
+	public void OptionsButtonPressed()
+	{
+		Debug.Log("Options enabled");
+		defaultScreen.SetActive(false);
 	}
 
 	private void Awake()
@@ -56,15 +77,24 @@ public class GameManager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		scoreText.text = "Score: " + Player.Instance.transform.position.y.ToString("f0");
-		armorImage.fillAmount = Player.Instance.armorCount / 10f;
-		healthImage.fillAmount = Player.Instance.health / 10f;
+		if(scoreText != null && armorImage != null && healthImage != null)
+		{
+			scoreText.text = "Score : " + Player.Instance.transform.position.y.ToString("f0");
+			armorImage.fillAmount = Player.Instance.armorCount / 10f;
+			healthImage.fillAmount = Player.Instance.health / 10f;
+		}
 
 		if (gamePaused)
 		{
 			ResetGame();
 		}
 
-		realTimeSpeed = Player.Instance.speed * Time.fixedDeltaTime;
+		if (Player.Instance != null)
+		{
+			realTimeSpeed = Player.Instance.speed * Time.fixedDeltaTime;
+		}else
+		{
+			realTimeSpeed = 2f * Time.fixedDeltaTime;
+		}
 	}
 }
