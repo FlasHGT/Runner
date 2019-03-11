@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
 	[SerializeField] AudioSource musicSource = null;
 	[SerializeField] AudioSource afxSource = null;
 
+	[SerializeField] AudioClip consumableHPClip = null;
+	[SerializeField] AudioClip consumableInvincibleClip = null;
+	[SerializeField] AudioClip consumableArmorClip = null;
 	[SerializeField] AudioClip deathClip = null;
 	[SerializeField] AudioClip armorHitClip = null;
 	[SerializeField] AudioClip healthHitClip = null;
@@ -46,6 +49,24 @@ public class AudioManager : MonoBehaviour
 		afxSource.Play();
 	}
 
+	public void PlayHealthRepairClip()
+	{
+		afxSource.clip = consumableHPClip;
+		afxSource.Play();
+	}
+
+	public void PlayArmorUpClip()
+	{
+		afxSource.clip = consumableArmorClip;
+		afxSource.Play();
+	}
+
+	public void PlayInvincibleClip()
+	{
+		afxSource.clip = consumableInvincibleClip;
+		afxSource.Play();
+	}
+
 	public void SetSliderValues()
 	{
 		uiSlider.value = uiSource.volume;
@@ -62,7 +83,7 @@ public class AudioManager : MonoBehaviour
 
 	private void Awake()
 	{
-		if(Instance == null) 
+		if(!Instance) 
 		{
 			Instance = this;
 			DontDestroyOnLoad(this);

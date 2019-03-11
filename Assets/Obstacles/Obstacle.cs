@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-	[SerializeField] float removeTime = 25f;
 	[SerializeField] Sprite[] obstacleSprites = null;
 
 	private float rotateSpeed = 0f;
@@ -29,6 +28,11 @@ public class Obstacle : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		if(collision.gameObject.CompareTag("Consumable"))
+		{
+			transform.gameObject.SetActive(false);
+		}
+
 		if (collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
 		{
 			transform.gameObject.SetActive(false);
@@ -41,6 +45,9 @@ public class Obstacle : MonoBehaviour
 				Player.Instance.armorCount -= 2.5f;
 				AudioManager.Instance.PlayArmorHitClip();
 			}
+		}else
+		{
+			AudioManager.Instance.PlayInvincibleClip();
 		}
 	}
 }

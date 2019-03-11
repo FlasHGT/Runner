@@ -10,7 +10,7 @@ public class PoolManager : MonoBehaviour
 
 	private void Awake()
 	{
-		if (Instance == null)
+		if (!Instance)
 		{
 			Instance = this;
 		}

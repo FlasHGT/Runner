@@ -173,14 +173,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b6c9a62d5eb2d40ba5edef63e9ea2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionsScreen: {fileID: 5258315306944863218, guid: c41014be1b5223543b6189612c3d55fe,
-    type: 3}
   uiSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   afxSlider: {fileID: 0}
   uiSource: {fileID: 4472590750751328729}
   musicSource: {fileID: 7802571544957717713}
   afxSource: {fileID: 128683552}
+  consumableHPClip: {fileID: 8300000, guid: 4a6622cb1ad0f2a4db678021cfcb06a3, type: 3}
+  consumableInvincibleClip: {fileID: 8300000, guid: 1f1fbfd16bb7cd94584f0d343598eecb,
+    type: 3}
+  consumableArmorClip: {fileID: 8300000, guid: 27ca10b1f87b2bc4288dcf9bee32811a, type: 3}
   deathClip: {fileID: 8300000, guid: 88cc48118fb479e48af35408b715bd97, type: 3}
   armorHitClip: {fileID: 8300000, guid: cf8266ec8d807b14696a3d1b79363a8c, type: 3}
   healthHitClip: {fileID: 8300000, guid: 19f3e576d8c98ba4db86336252efc97b, type: 3}

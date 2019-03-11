@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
 	private void Awake()
 	{
-		if (Instance == null)
+		if (!Instance)
 		{
 			Instance = this;
 		}
@@ -92,26 +92,31 @@ public class Player : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		Consumable consumable = collision.GetComponent<Consumable>();
-		switch (consumable.consumableType)
+		if(consumable)
 		{
-			case ConsumableType.Invincible:
-				collision.gameObject.SetActive(false);
-				StartCoroutine(Invincible());
-				consumable.needsReset = true;
-				break;
-			case ConsumableType.AddArmor:
-				collision.gameObject.SetActive(false);
-				armorCount = 10f;
-				consumable.needsReset = true;
-				break;
-			case ConsumableType.AddHP:
-				collision.gameObject.SetActive(false);
-				health += 5f;
-				consumable.needsReset = true;
-				break;
-			default:
-				Debug.Log("This is not a consumable");
-				break;
+			switch (consumable.consumableType)
+			{
+				case ConsumableType.Invincible:
+					collision.gameObject.SetActive(false);
+					StartCoroutine(Invincible());
+					consumable.needsReset = true;
+					break;
+				case ConsumableType.AddArmor:
+					collision.gameObject.SetActive(false);
+					AudioManager.Instance.PlayArmorUpClip();
+					armorCount = 10f;
+					consumable.needsReset = true;
+					break;
+				case ConsumableType.AddHP:
+					collision.gameObject.SetActive(false);
+					AudioManager.Instance.PlayHealthRepairClip();
+					health += 5;
+					consumable.needsReset = true;
+					break;
+				default:
+					Debug.Log("This is not a consumable");
+					break;
+			}
 		}
 	}
 
