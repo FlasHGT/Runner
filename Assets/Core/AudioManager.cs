@@ -7,9 +7,9 @@ public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance = null;
 
-	public AudioSource buttonAudioSource = null;
-	public AudioSource musicAudioSource = null;
-	public AudioSource afxAudioSource = null;
+	[SerializeField] AudioSource buttonAudioSource = null;
+	[SerializeField] AudioSource musicAudioSource = null;
+	[SerializeField] AudioSource afxAudioSource = null;
 
 	[SerializeField] AudioClip deathClip = null;
 	[SerializeField] AudioClip armorHitClip = null;
@@ -17,6 +17,11 @@ public class AudioManager : MonoBehaviour
 	[SerializeField] AudioClip[] mainMenuAudioClips = null;
 
 	private bool songNeeded = true;
+
+	public void PlayButtonClick ()
+	{
+		buttonAudioSource.Play();
+	}
 
 	public void PlayDeathClip()
 	{

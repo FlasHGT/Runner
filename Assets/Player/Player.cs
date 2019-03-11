@@ -31,15 +31,18 @@ public class Player : MonoBehaviour
 	{
 		if (transform.position.x >= 21f || transform.position.x <= -21f)
 		{
-			Death();
 			GameManager.Instance.ResetGame();
+		}
+		else
+		{
+			AudioManager.Instance.PlayDeathClip();
 		}
 
 		if(health <= 0f)
 		{
-			Death();
-			GameManager.Instance.ResetGame();
-		}else if(health > 10f)
+			
+		}
+		else if(health > 10f)
 		{
 			health = 10f;
 		}
@@ -48,11 +51,6 @@ public class Player : MonoBehaviour
 		{
 			Move();
 		}
-	}
-
-	private void Death()
-	{
-		AudioManager.Instance.PlayDeathClip();
 	}
 
 	private void Move()

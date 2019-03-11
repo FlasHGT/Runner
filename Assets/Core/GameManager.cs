@@ -48,38 +48,38 @@ public class GameManager : MonoBehaviour
 
 	public void RetryButtonPressed()
 	{
-		AudioManager.Instance.buttonAudioSource.Play();
+		AudioManager.Instance.PlayButtonClick();
 		retryButtonPressed = true;
 	}
 
 	public void QuitButtonPressed()
 	{
-		AudioManager.Instance.buttonAudioSource.Play();
+		AudioManager.Instance.PlayButtonClick();
 		Application.Quit();
 	}
 
 	public void MainMenuButtonPressed()
 	{
-		AudioManager.Instance.buttonAudioSource.Play();
+		AudioManager.Instance.PlayButtonClick();
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 	}
 
 	public void StartButtonPressed()
 	{
-		AudioManager.Instance.buttonAudioSource.Play();
+		AudioManager.Instance.PlayButtonClick();
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
 	public void OptionsButtonPressed()
 	{
-		AudioManager.Instance.buttonAudioSource.Play();
+		AudioManager.Instance.PlayButtonClick();
 		defaultScreen.SetActive(false);
 		optionsScreen.SetActive(true);
 	}
 
 	public void OptionsButtonExit()
 	{
-		AudioManager.Instance.buttonAudioSource.Play();
+		AudioManager.Instance.PlayButtonClick();
 		optionsScreen.SetActive(false);
 		defaultScreen.SetActive(true);
 	}
