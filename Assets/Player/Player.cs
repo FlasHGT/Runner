@@ -33,14 +33,10 @@ public class Player : MonoBehaviour
 		{
 			GameManager.Instance.ResetGame();
 		}
-		else
-		{
-			AudioManager.Instance.PlayDeathClip();
-		}
 
 		if(health <= 0f)
 		{
-			
+			GameManager.Instance.ResetGame();
 		}
 		else if(health > 10f)
 		{

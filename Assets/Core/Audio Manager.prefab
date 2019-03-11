@@ -43,7 +43,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -173,9 +173,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b6c9a62d5eb2d40ba5edef63e9ea2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonAudioSource: {fileID: 4472590750751328729}
-  musicAudioSource: {fileID: 7802571544957717713}
-  afxAudioSource: {fileID: 128683552}
+  optionsScreen: {fileID: 5258315306944863218, guid: c41014be1b5223543b6189612c3d55fe,
+    type: 3}
+  uiSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  afxSlider: {fileID: 0}
+  uiSource: {fileID: 4472590750751328729}
+  musicSource: {fileID: 7802571544957717713}
+  afxSource: {fileID: 128683552}
   deathClip: {fileID: 8300000, guid: 88cc48118fb479e48af35408b715bd97, type: 3}
   armorHitClip: {fileID: 8300000, guid: cf8266ec8d807b14696a3d1b79363a8c, type: 3}
   healthHitClip: {fileID: 8300000, guid: 19f3e576d8c98ba4db86336252efc97b, type: 3}
@@ -192,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 193128847424026533, guid: 59ec4f81fec3e3941beb647203a55159,
         type: 3}
       propertyPath: m_Name
-      value: Buttons
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 193128847424026531, guid: 59ec4f81fec3e3941beb647203a55159,
         type: 3}
@@ -248,6 +253,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193128847424026530, guid: 59ec4f81fec3e3941beb647203a55159,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59ec4f81fec3e3941beb647203a55159, type: 3}
@@ -275,6 +285,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music
       objectReference: {fileID: 0}
+    - target: {fileID: 5933942130144405456, guid: f4594a5fd58e29a4daf455ce57efbc0b,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5933942130144405456, guid: f4594a5fd58e29a4daf455ce57efbc0b,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5933942130144405459, guid: f4594a5fd58e29a4daf455ce57efbc0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -328,11 +348,6 @@ PrefabInstance:
     - target: {fileID: 5933942130144405459, guid: f4594a5fd58e29a4daf455ce57efbc0b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5933942130144405456, guid: f4594a5fd58e29a4daf455ce57efbc0b,
-        type: 3}
-      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

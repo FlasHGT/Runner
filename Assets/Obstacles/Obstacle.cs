@@ -32,7 +32,7 @@ public class Obstacle : MonoBehaviour
 		if (collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
 		{
 			transform.gameObject.SetActive(false);
-			if(Player.Instance.armorCount == 0)
+			if(Player.Instance.armorCount <= 0)
 			{
 				Player.Instance.health -= 2f;
 				AudioManager.Instance.PlayHealthHitClip();

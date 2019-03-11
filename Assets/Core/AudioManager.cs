@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance = null;
 
-	[SerializeField] AudioSource buttonAudioSource = null;
-	[SerializeField] AudioSource musicAudioSource = null;
-	[SerializeField] AudioSource afxAudioSource = null;
+	[SerializeField] Slider uiSlider = null;
+	[SerializeField] Slider musicSlider = null;
+	[SerializeField] Slider afxSlider = null;
+
+	[SerializeField] AudioSource uiSource = null;
+	[SerializeField] AudioSource musicSource = null;
+	[SerializeField] AudioSource afxSource = null;
 
 	[SerializeField] AudioClip deathClip = null;
 	[SerializeField] AudioClip armorHitClip = null;
@@ -20,25 +25,39 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayButtonClick ()
 	{
-		buttonAudioSource.Play();
+		uiSource.Play();
 	}
 
 	public void PlayDeathClip()
 	{
-		afxAudioSource.clip = deathClip;
-		afxAudioSource.Play();
+		afxSource.clip = deathClip;
+		afxSource.Play();
 	}
 
 	public void PlayArmorHitClip()
 	{
-		afxAudioSource.clip = armorHitClip;
-		afxAudioSource.Play();
+		afxSource.clip = armorHitClip;
+		afxSource.Play();
 	}
 
 	public void PlayHealthHitClip()
 	{
-		afxAudioSource.clip = healthHitClip;
-		afxAudioSource.Play();
+		afxSource.clip = healthHitClip;
+		afxSource.Play();
+	}
+
+	public void SetSliderValues()
+	{
+		uiSlider.value = uiSource.volume;
+		musicSlider.value = musicSource.volume;
+		afxSlider.value = afxSource.volume;
+	}
+
+	public void SaveSliderValues()
+	{
+		uiSource.volume = uiSlider.value;
+		musicSource.volume = musicSlider.value;
+		afxSource.volume = afxSlider.value;
 	}
 
 	private void Awake()
@@ -55,17 +74,17 @@ public class AudioManager : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     private void FixedUpdate()
-    {
-		if (songNeeded && musicAudioSource)
+	{
+		if (songNeeded && musicSource)
 		{
-			musicAudioSource.clip = mainMenuAudioClips[Random.Range(0, mainMenuAudioClips.Length)];
-			musicAudioSource.Play();
-			StartCoroutine(SwitchSong(musicAudioSource.clip.length));
+			musicSource.clip = mainMenuAudioClips[Random.Range(0, mainMenuAudioClips.Length)];
+			musicSource.Play();
+			StartCoroutine(SwitchSong(musicSource.clip.length));
 		}
 	}
 

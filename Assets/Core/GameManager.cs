@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
 
 	public void OptionsButtonPressed()
 	{
+		//AudioManager.Instance.SetSliderValues();
 		AudioManager.Instance.PlayButtonClick();
 		defaultScreen.SetActive(false);
 		optionsScreen.SetActive(true);
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviour
 
 	public void OptionsButtonExit()
 	{
+		//AudioManager.Instance.SaveSliderValues();
 		AudioManager.Instance.PlayButtonClick();
 		optionsScreen.SetActive(false);
 		defaultScreen.SetActive(true);
