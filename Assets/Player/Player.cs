@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
 
 	[SerializeField] Sprite defaultSprite = null;
 	[SerializeField] Sprite[] armorLayers = null;
-	[SerializeField] Sprite invincibleSprite = null;
+
+	[SerializeField] ParticleSystem enginePS = null;
 
 	private SpriteRenderer sR = null;
 
@@ -37,11 +38,15 @@ public class Player : MonoBehaviour
 	{
 		if (transform.position.x >= 21f || transform.position.x <= -21f)
 		{
+			enginePS.Stop();
+			sR.enabled = false;
 			GameManager.Instance.ResetGame();
 		}
 
 		if (health <= 0f)
 		{
+			enginePS.Stop();
+			sR.enabled = false;
 			GameManager.Instance.ResetGame();
 		}
 		else if (health > 10f)
