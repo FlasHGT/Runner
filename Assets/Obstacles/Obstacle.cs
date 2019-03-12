@@ -32,20 +32,22 @@ public class Obstacle : MonoBehaviour
 		{
 			transform.gameObject.SetActive(false);
 		}
-
-		if (collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
+		else if(collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
 		{
 			transform.gameObject.SetActive(false);
-			if(Player.Instance.armorCount <= 0)
+
+			if (Player.Instance.armorCount <= 0)
 			{
 				Player.Instance.health -= 2f;
 				AudioManager.Instance.PlayHealthHitClip();
-			}else
+			}
+			else
 			{
 				Player.Instance.armorCount -= 2.5f;
 				AudioManager.Instance.PlayArmorHitClip();
 			}
-		}else
+		}
+		else
 		{
 			AudioManager.Instance.PlayInvincibleClip();
 		}

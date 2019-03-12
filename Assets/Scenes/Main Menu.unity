@@ -3224,6 +3224,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1069400843597106363, guid: 58102552255fe624fbc11bad914127af,
+        type: 3}
+      propertyPath: defaultScreen
+      value: 
+      objectReference: {fileID: 1542637505}
+    - target: {fileID: 1069400843597106363, guid: 58102552255fe624fbc11bad914127af,
+        type: 3}
+      propertyPath: optionsScreen
+      value: 
+      objectReference: {fileID: 1622151097}
+    - target: {fileID: 1069400843597106363, guid: 58102552255fe624fbc11bad914127af,
+        type: 3}
+      propertyPath: quoteText
+      value: 
+      objectReference: {fileID: 2137653803}
     - target: {fileID: 1069400843597106362, guid: 58102552255fe624fbc11bad914127af,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3279,21 +3294,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1069400843597106363, guid: 58102552255fe624fbc11bad914127af,
-        type: 3}
-      propertyPath: defaultScreen
-      value: 
-      objectReference: {fileID: 1542637505}
-    - target: {fileID: 1069400843597106363, guid: 58102552255fe624fbc11bad914127af,
-        type: 3}
-      propertyPath: optionsScreen
-      value: 
-      objectReference: {fileID: 1622151097}
-    - target: {fileID: 1069400843597106363, guid: 58102552255fe624fbc11bad914127af,
-        type: 3}
-      propertyPath: quoteText
-      value: 
-      objectReference: {fileID: 2137653803}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58102552255fe624fbc11bad914127af, type: 3}
 --- !u!1001 &4472590750533254597
