@@ -1975,75 +1975,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c26963af2ad152c45a1265d37dbc2130, type: 3}
---- !u!1001 &4548118182717837724
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6261599448264409259, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_Name
-      value: Stone Destruction PS
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.037
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.032
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930208881358567002, guid: 84367c78423f02f438a0c7c4359280e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 84367c78423f02f438a0c7c4359280e2, type: 3}
 --- !u!1001 &5490295113402396919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2569,5 +2500,40 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: armorLayers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: armorLayers.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 18d34bfe7b25fbf49b7f4e26eeb5807f,
+        type: 3}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: armorLayers.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: f3e05de3d0099ab419142255ead02d12,
+        type: 3}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: armorLayers.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: e3aeab6ac83bd4649a1376897e37fc5a,
+        type: 3}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: armorLayers.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2482a1261c1f9b94680bf538542ebb71,
+        type: 3}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fef83b04432a915488beaa66a4570b8e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9606952ae87757f4f9070d2b53744f2d, type: 3}

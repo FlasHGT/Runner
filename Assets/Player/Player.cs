@@ -13,6 +13,12 @@ public class Player : MonoBehaviour
 	public bool mobileInput = false;
 	public bool isInvincible = false;
 
+	[SerializeField] Sprite defaultSprite = null;
+	[SerializeField] Sprite[] armorLayers = null;
+	[SerializeField] Sprite invincibleSprite = null;
+
+	private SpriteRenderer sR = null;
+
 	private void Awake()
 	{
 		if (!Instance)
@@ -23,7 +29,7 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
-		
+		sR = GetComponent<SpriteRenderer>();
 	}
 
 	// Update is called once per frame
@@ -34,11 +40,11 @@ public class Player : MonoBehaviour
 			GameManager.Instance.ResetGame();
 		}
 
-		if(health <= 0f)
+		if (health <= 0f)
 		{
 			GameManager.Instance.ResetGame();
 		}
-		else if(health > 10f)
+		else if (health > 10f)
 		{
 			health = 10f;
 		}
@@ -46,6 +52,26 @@ public class Player : MonoBehaviour
 		if (!GameManager.Instance.gamePaused)
 		{
 			Move();
+		}
+
+		if (armorCount == 10f)
+		{
+			sR.sprite = armorLayers[3];
+		} else if (armorCount == 7.5f)
+		{
+			sR.sprite = armorLayers[2];
+		}
+		else if (armorCount == 5f)
+		{
+			sR.sprite = armorLayers[1];
+		}
+		else if (armorCount == 2.5f)
+		{
+			sR.sprite = armorLayers[0];
+		}
+		else if (armorCount == 0f)
+		{
+			sR.sprite = defaultSprite;	
 		}
 	}
 
@@ -123,7 +149,12 @@ public class Player : MonoBehaviour
 	IEnumerator Invincible ()
 	{
 		isInvincible = true;
+		Color tmp = sR.color;
+		tmp.a = 0.5f;
+		sR.color = tmp;
 		yield return new WaitForSeconds(5);
 		isInvincible = false;
+		tmp.a = 1f;
+		sR.color = tmp;
 	}
 }

@@ -44,11 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quotes:
-  - Hello
-  - Hey
-  - Hi
-  - Morning
-  - Evening
+  - The universe is under no obligation to make sense to you - Neil deGrasse Tyson
+  - Somewhere, something incredible is waiting to be known - Carl Sagan
+  - Once you make a decision, the universe conspires to make it happen - Ralph Waldo
+    Emerson
+  - Sometimes you have to go up really high to understand how small you really are
+    - Felix Baumgartner
+  - There is nothing bigger or older than the universe - Stephen Hawking
   defaultScreen: {fileID: 0}
   optionsScreen: {fileID: 0}
   quoteText: {fileID: 0}
