@@ -18,6 +18,11 @@ public class Player : MonoBehaviour
 
 	[SerializeField] ParticleSystem enginePS = null;
 
+	[SerializeField] GameObject shrapnelGO = null;
+	[SerializeField] GameObject fireGO = null;
+	[SerializeField] GameObject smokeGO = null;
+	[SerializeField] GameObject lightGO = null;
+
 	private SpriteRenderer sR = null;
 
 	private void Awake()
@@ -30,6 +35,8 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
+		GetComponent<Animator>().enabled = false;
+
 		sR = GetComponent<SpriteRenderer>();
 	}
 
@@ -38,15 +45,13 @@ public class Player : MonoBehaviour
 	{
 		if (transform.position.x >= 21f || transform.position.x <= -21f)
 		{
-			enginePS.Stop();
-			sR.enabled = false;
+			Death();
 			GameManager.Instance.ResetGame();
 		}
 
 		if (health <= 0f)
 		{
-			enginePS.Stop();
-			sR.enabled = false;
+			Death();
 			GameManager.Instance.ResetGame();
 		}
 		else if (health > 10f)
@@ -78,6 +83,25 @@ public class Player : MonoBehaviour
 		{
 			sR.sprite = defaultSprite;	
 		}
+	}
+
+	private void Death()
+	{
+		enginePS.Stop();
+		sR.enabled = false;
+
+		fireGO.transform.rotation = Quaternion.identity;
+		smokeGO.transform.rotation = Quaternion.identity;
+		lightGO.transform.rotation = Quaternion.identity;
+		shrapnelGO.transform.rotation = Quaternion.identity;
+
+		fireGO.SetActive(true);
+		smokeGO.SetActive(true);
+		lightGO.SetActive(true);
+		shrapnelGO.SetActive(true);
+
+		GetComponent<Animator>().enabled = true;
+		AudioManager.Instance.PlayDeathClip();
 	}
 
 	private void Move()

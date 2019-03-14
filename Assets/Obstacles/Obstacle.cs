@@ -6,6 +6,8 @@ public class Obstacle : MonoBehaviour
 {
 	[SerializeField] Sprite[] obstacleSprites = null;
 
+	[SerializeField] GameObject destructionPS = null;
+
 	private float rotateSpeed = 0f;
 
 	private void Start()
@@ -34,6 +36,8 @@ public class Obstacle : MonoBehaviour
 		}
 		else if(collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
 		{
+			GameObject newObject = Instantiate(destructionPS, transform.position, transform.rotation);
+			Destroy(newObject, 1f);
 			transform.gameObject.SetActive(false);
 
 			if (Player.Instance.armorCount <= 0)
