@@ -19,9 +19,14 @@ public class AudioManager : MonoBehaviour
 	[SerializeField] AudioClip consumableHPClip = null;
 	[SerializeField] AudioClip consumableInvincibleClip = null;
 	[SerializeField] AudioClip consumableArmorClip = null;
+	[SerializeField] AudioClip consumableAmmoClip = null;
+
 	[SerializeField] AudioClip deathClip = null;
 	[SerializeField] AudioClip armorHitClip = null;
 	[SerializeField] AudioClip healthHitClip = null;
+	[SerializeField] AudioClip obstacleHitByProjectile = null;
+	[SerializeField] AudioClip[] shootClip = null;
+
 	[SerializeField] AudioClip[] mainMenuAudioClips = null;
 
 	private bool songNeeded = true;
@@ -34,6 +39,24 @@ public class AudioManager : MonoBehaviour
 	public void PlayDeathClip()
 	{
 		afxSource.clip = deathClip;
+		afxSource.Play();
+	}
+
+	public void PlayObstacleHitByProjectile()
+	{
+		afxSource.clip = obstacleHitByProjectile;
+		afxSource.Play();
+	}
+
+	public void PlayShootClip()
+	{
+		afxSource.clip = shootClip[Random.Range(0, shootClip.Length)];
+		afxSource.Play();
+	}
+
+	public void PlayAddAmmo()
+	{
+		afxSource.clip = consumableAmmoClip;
 		afxSource.Play();
 	}
 

@@ -5138,6 +5138,7 @@ MonoBehaviour:
   speed: 10
   health: 10
   armorCount: 0
+  ammoCount: 0
   mobileInput: 0
   isInvincible: 0
   defaultSprite: {fileID: 21300000, guid: fef83b04432a915488beaa66a4570b8e, type: 3}
@@ -5151,6 +5152,8 @@ MonoBehaviour:
   fireGO: {fileID: 629566677}
   smokeGO: {fileID: 629598207}
   lightGO: {fileID: 629506067}
+  projectile: {fileID: 7685304116614026665, guid: bc508b7b57d7f66488a975cf067e36a0,
+    type: 3}
 --- !u!60 &820684736862864197
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -183,9 +183,16 @@ MonoBehaviour:
   consumableInvincibleClip: {fileID: 8300000, guid: 1f1fbfd16bb7cd94584f0d343598eecb,
     type: 3}
   consumableArmorClip: {fileID: 8300000, guid: 27ca10b1f87b2bc4288dcf9bee32811a, type: 3}
+  consumableAmmoClip: {fileID: 8300000, guid: 564213aa6987ad54298067a04a8826e2, type: 3}
   deathClip: {fileID: 8300000, guid: 88cc48118fb479e48af35408b715bd97, type: 3}
   armorHitClip: {fileID: 8300000, guid: cf8266ec8d807b14696a3d1b79363a8c, type: 3}
   healthHitClip: {fileID: 8300000, guid: 19f3e576d8c98ba4db86336252efc97b, type: 3}
+  obstacleHitByProjectile: {fileID: 8300000, guid: 99a9a9b5a2ada4949b1affae1e2001db,
+    type: 3}
+  shootClip:
+  - {fileID: 8300000, guid: d4f3f9f7bf0df204cb2caae7453f4335, type: 3}
+  - {fileID: 8300000, guid: 9975fe1917bfca44ab91d66c91aaec0f, type: 3}
+  - {fileID: 8300000, guid: 2036c51fe4534434e8e0cd82913138b4, type: 3}
   mainMenuAudioClips:
   - {fileID: 8300000, guid: 58de4ecf37604ee43af58f5bfeff43e3, type: 3}
   - {fileID: 8300000, guid: eb0b6f860c607744197f01c226f9cd18, type: 3}

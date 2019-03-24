@@ -10,7 +10,8 @@ public class Consumable : MonoBehaviour
 
 	[SerializeField] Sprite armorSprite = null;
 	[SerializeField] Sprite invincibleSprite = null;
-	[SerializeField] Sprite HPSprite = null;
+	[SerializeField] Sprite hpSprite = null;
+	[SerializeField] Sprite ammoSprite = null;
 
 	private SpriteRenderer currentRenderer = null;
 	private BoxCollider2D boxCollider = null;
@@ -37,7 +38,10 @@ public class Consumable : MonoBehaviour
 					currentRenderer.sprite = invincibleSprite;
 					break;
 				case ConsumableType.AddHP:
-					currentRenderer.sprite = HPSprite;
+					currentRenderer.sprite = hpSprite;
+					break;
+				case ConsumableType.AddAmmo:
+					currentRenderer.sprite = ammoSprite;
 					break;
 				default:
 					Debug.Log("Not a consumable");
@@ -54,5 +58,6 @@ public enum ConsumableType
 	Invincible,
 	AddArmor,
 	AddHP,
+	AddAmmo,
 	COUNT
 }

@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
 
 	public float speed = 2f;
 	public float health = 10f;
-
 	public float armorCount = 10f;
+	public float ammoCount = 0f;
 
 	public bool mobileInput = false;
 	public bool isInvincible = false;
@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 	[SerializeField] GameObject fireGO = null;
 	[SerializeField] GameObject smokeGO = null;
 	[SerializeField] GameObject lightGO = null;
+
+	[SerializeField] GameObject projectile = null;
 
 	private SpriteRenderer sR = null;
 
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour
 
 		if (!GameManager.Instance.gamePaused)
 		{
+			Shoot();
 			Move();
 		}
 
@@ -144,6 +147,16 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	private void Shoot()
+	{
+		if(Input.GetKeyDown(KeyCode.Space) && ammoCount != 0f)
+		{
+			ammoCount -= 2f;
+			Instantiate(projectile, transform.position, Quaternion.identity);
+			AudioManager.Instance.PlayShootClip();
+		}
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		Consumable consumable = collision.GetComponent<Consumable>();
@@ -166,6 +179,12 @@ public class Player : MonoBehaviour
 					collision.gameObject.SetActive(false);
 					AudioManager.Instance.PlayHealthRepairClip();
 					health += 5;
+					consumable.needsReset = true;
+					break;
+				case ConsumableType.AddAmmo:
+					collision.gameObject.SetActive(false);
+					AudioManager.Instance.PlayAddAmmo();
+					ammoCount += 10f;
 					consumable.needsReset = true;
 					break;
 				default:

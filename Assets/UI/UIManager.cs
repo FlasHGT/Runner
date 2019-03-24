@@ -22,8 +22,11 @@ public class UIManager : MonoBehaviour
 	public GameObject loseScreen = null;
 
 	[SerializeField] Text scoreText = null;
+
 	[SerializeField] Image healthImage = null;
 	[SerializeField] Image armorImage = null;
+	[SerializeField] Image ammoImage = null;
+
 	[SerializeField] Spawner obstacleSpawner = null;
 
 	public void RetryButtonPressed()
@@ -82,6 +85,7 @@ public class UIManager : MonoBehaviour
 			scoreText.text = "Score : " + Player.Instance.transform.position.y.ToString("f0");
 			armorImage.fillAmount = Player.Instance.armorCount / 10f;
 			healthImage.fillAmount = Player.Instance.health / 10f;
+			ammoImage.fillAmount = Player.Instance.ammoCount / 10f;
 		}
 
 		if (quoteText != null && quotes.Length != 0f && needQuote)

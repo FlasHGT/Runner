@@ -34,7 +34,14 @@ public class Obstacle : MonoBehaviour
 		{
 			transform.gameObject.SetActive(false);
 		}
-		else if(collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
+		else if(collision.gameObject.CompareTag("Projectile"))
+		{
+			Destroy(collision.gameObject);
+			transform.gameObject.SetActive(false);
+			GameObject newObject = Instantiate(destructionPS, transform.position, transform.rotation);
+			Destroy(newObject, 1f);
+			AudioManager.Instance.PlayObstacleHitByProjectile();
+		}else if (collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
 		{
 			GameObject newObject = Instantiate(destructionPS, transform.position, transform.rotation);
 			Destroy(newObject, 1f);
