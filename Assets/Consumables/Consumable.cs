@@ -51,6 +51,28 @@ public class Consumable : MonoBehaviour
 			needsReset = false;
 		}
 	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if(collision.gameObject.CompareTag("Player"))
+		{
+			switch (consumableType)
+			{
+				case ConsumableType.AddArmor:
+					AudioManager.Instance.PlayArmorUp();
+					break;
+				case ConsumableType.AddHP:
+					AudioManager.Instance.PlayHealthUp();
+					break;
+				case ConsumableType.AddAmmo:
+					AudioManager.Instance.PlayAmmoUp();
+					break;
+				default:
+					Debug.Log("Not a consumable");
+					break;
+			}
+		}
+	}
 }
 
 public enum ConsumableType

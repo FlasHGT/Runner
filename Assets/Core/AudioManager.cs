@@ -10,22 +10,20 @@ public class AudioManager : MonoBehaviour
 
 	[SerializeField] Slider uiSlider = null;
 	[SerializeField] Slider musicSlider = null;
-	[SerializeField] Slider afxSlider = null;
 
 	[SerializeField] AudioSource uiSource = null;
 	[SerializeField] AudioSource musicSource = null;
-	[SerializeField] AudioSource afxSource = null;
+	[SerializeField] AudioSource obstacleSource = null;
+	[SerializeField] AudioSource consumableSource = null;
 
-	[SerializeField] AudioClip consumableHPClip = null;
-	[SerializeField] AudioClip consumableInvincibleClip = null;
-	[SerializeField] AudioClip consumableArmorClip = null;
-	[SerializeField] AudioClip consumableAmmoClip = null;
+	[SerializeField] AudioClip healthUpClip = null;
+	[SerializeField] AudioClip armorUpClip = null;
+	[SerializeField] AudioClip ammoUpClip = null;
 
-	[SerializeField] AudioClip deathClip = null;
-	[SerializeField] AudioClip armorHitClip = null;
-	[SerializeField] AudioClip healthHitClip = null;
-	[SerializeField] AudioClip obstacleHitByProjectile = null;
-	[SerializeField] AudioClip[] shootClip = null;
+	[SerializeField] AudioClip hitByProjectile = null;
+	[SerializeField] AudioClip hitByPlayerWithArmor = null;
+	[SerializeField] AudioClip hitByPlayerWithoutArmor = null;
+	[SerializeField] AudioClip hitInvincible = null;
 
 	[SerializeField] AudioClip[] mainMenuAudioClips = null;
 
@@ -36,72 +34,46 @@ public class AudioManager : MonoBehaviour
 		uiSource.Play();
 	}
 
-	public void PlayDeathClip()
+	public void PlayHitByProjectile()
 	{
-		afxSource.clip = deathClip;
-		afxSource.Play();
+		obstacleSource.clip = hitByProjectile;
+		obstacleSource.Play();
 	}
 
-	public void PlayObstacleHitByProjectile()
+	public void PlayHitByPlayerArmor()
 	{
-		afxSource.clip = obstacleHitByProjectile;
-		afxSource.Play();
+		obstacleSource.clip = hitByPlayerWithArmor;
+		obstacleSource.Play();
 	}
 
-	public void PlayShootClip()
+	public void PlayHitByPlayer()
 	{
-		afxSource.clip = shootClip[Random.Range(0, shootClip.Length)];
-		afxSource.Play();
+		obstacleSource.clip = hitByPlayerWithoutArmor;
+		obstacleSource.Play();
 	}
 
-	public void PlayAddAmmo()
+	public void PlayHitInvincible()
 	{
-		afxSource.clip = consumableAmmoClip;
-		afxSource.Play();
+		obstacleSource.clip = hitInvincible;
+		obstacleSource.Play();
 	}
 
-	public void PlayArmorHitClip()
+	public void PlayHealthUp()
 	{
-		afxSource.clip = armorHitClip;
-		afxSource.Play();
+		consumableSource.clip = healthUpClip;
+		consumableSource.Play();
 	}
 
-	public void PlayHealthHitClip()
+	public void PlayAmmoUp()
 	{
-		afxSource.clip = healthHitClip;
-		afxSource.Play();
+		consumableSource.clip = ammoUpClip;
+		consumableSource.Play();
 	}
 
-	public void PlayHealthRepairClip()
+	public void PlayArmorUp()
 	{
-		afxSource.clip = consumableHPClip;
-		afxSource.Play();
-	}
-
-	public void PlayArmorUpClip()
-	{
-		afxSource.clip = consumableArmorClip;
-		afxSource.Play();
-	}
-
-	public void PlayInvincibleClip()
-	{
-		afxSource.clip = consumableInvincibleClip;
-		afxSource.Play();
-	}
-
-	public void SetSliderValues()
-	{
-		uiSlider.value = uiSource.volume;
-		musicSlider.value = musicSource.volume;
-		afxSlider.value = afxSource.volume;
-	}
-
-	public void SaveSliderValues()
-	{
-		uiSource.volume = uiSlider.value;
-		musicSource.volume = musicSlider.value;
-		afxSource.volume = afxSlider.value;
+		consumableSource.clip = armorUpClip;
+		consumableSource.Play();
 	}
 
 	private void Awake()

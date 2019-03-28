@@ -13,6 +13,11 @@ public class Player : MonoBehaviour
 	public bool mobileInput = false;
 	public bool isInvincible = false;
 
+	[SerializeField] AudioSource audioSource = null;
+
+	[SerializeField] AudioClip[] shootClips = null;
+	[SerializeField] AudioClip playerDeathClip = null;
+
 	[SerializeField] Sprite defaultSprite = null;
 	[SerializeField] Sprite[] armorLayers = null;
 
@@ -104,7 +109,8 @@ public class Player : MonoBehaviour
 		shrapnelGO.SetActive(true);
 
 		GetComponent<Animator>().enabled = true;
-		AudioManager.Instance.PlayDeathClip();
+		audioSource.clip = playerDeathClip;
+		audioSource.Play();
 	}
 
 	private void Move()
@@ -153,7 +159,9 @@ public class Player : MonoBehaviour
 		{
 			ammoCount -= 2f;
 			Instantiate(projectile, transform.position, Quaternion.identity);
-			AudioManager.Instance.PlayShootClip();
+
+			audioSource.clip = shootClips[Random.Range(0, shootClips.Length)];
+			audioSource.Play();
 		}
 	}
 
@@ -171,19 +179,16 @@ public class Player : MonoBehaviour
 					break;
 				case ConsumableType.AddArmor:
 					collision.gameObject.SetActive(false);
-					AudioManager.Instance.PlayArmorUpClip();
 					armorCount = 10f;
 					consumable.needsReset = true;
 					break;
 				case ConsumableType.AddHP:
 					collision.gameObject.SetActive(false);
-					AudioManager.Instance.PlayHealthRepairClip();
 					health += 5;
 					consumable.needsReset = true;
 					break;
 				case ConsumableType.AddAmmo:
 					collision.gameObject.SetActive(false);
-					AudioManager.Instance.PlayAddAmmo();
 					ammoCount += 10f;
 					consumable.needsReset = true;
 					break;

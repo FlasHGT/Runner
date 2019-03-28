@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
-{
+{ 
 	[SerializeField] Sprite[] obstacleSprites = null;
 
 	[SerializeField] GameObject destructionPS = null;
@@ -40,7 +40,8 @@ public class Obstacle : MonoBehaviour
 			transform.gameObject.SetActive(false);
 			GameObject newObject = Instantiate(destructionPS, transform.position, transform.rotation);
 			Destroy(newObject, 1f);
-			AudioManager.Instance.PlayObstacleHitByProjectile();
+
+			AudioManager.Instance.PlayHitByProjectile();
 		}else if (collision.gameObject.CompareTag("Player") && !Player.Instance.isInvincible)
 		{
 			GameObject newObject = Instantiate(destructionPS, transform.position, transform.rotation);
@@ -50,17 +51,19 @@ public class Obstacle : MonoBehaviour
 			if (Player.Instance.armorCount <= 0)
 			{
 				Player.Instance.health -= 2f;
-				AudioManager.Instance.PlayHealthHitClip();
+
+				AudioManager.Instance.PlayHitByPlayer();
 			}
 			else
 			{
 				Player.Instance.armorCount -= 2.5f;
-				AudioManager.Instance.PlayArmorHitClip();
+
+				AudioManager.Instance.PlayHitByPlayerArmor();
 			}
 		}
 		else
 		{
-			AudioManager.Instance.PlayInvincibleClip();
+			AudioManager.Instance.PlayHitInvincible();
 		}
 	}
 }

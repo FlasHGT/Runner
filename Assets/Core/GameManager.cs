@@ -46,7 +46,25 @@ public class GameManager : MonoBehaviour
 
 		if (Player.Instance != null)
 		{
-			realTimeSpeed = Player.Instance.speed * Time.fixedDeltaTime;
+			float playerSpeed = Player.Instance.speed;
+			if(Player.Instance.transform.position.y > 1000f)
+			{
+				playerSpeed += 4f;
+			}
+			else if (Player.Instance.transform.position.y > 750f)
+			{
+				playerSpeed += 3f;
+			}
+			else if (Player.Instance.transform.position.y > 500f)
+			{
+				playerSpeed += 2f;
+			}
+			else if (Player.Instance.transform.position.y > 250f)
+			{
+				playerSpeed += 1f;
+			}
+
+			realTimeSpeed = playerSpeed * Time.fixedDeltaTime;
 		}else
 		{
 			realTimeSpeed = 2f * Time.fixedDeltaTime;
