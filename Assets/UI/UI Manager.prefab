@@ -53,9 +53,13 @@ MonoBehaviour:
   - There is nothing bigger or older than the universe - Stephen Hawking
   defaultScreen: {fileID: 0}
   optionsScreen: {fileID: 0}
+  tutorialScreen: {fileID: 0}
   quoteText: {fileID: 0}
   loseScreen: {fileID: 0}
   scoreText: {fileID: 0}
   healthImage: {fileID: 0}
   armorImage: {fileID: 0}
+  ammoImage: {fileID: 0}
   obstacleSpawner: {fileID: 0}
+  coreImage: {fileID: 0}
+  consumableImage: {fileID: 0}

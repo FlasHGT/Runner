@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] GameObject defaultScreen = null;
 	[SerializeField] GameObject optionsScreen = null;
+	[SerializeField] GameObject tutorialScreen = null;
 
 	[SerializeField] Text quoteText = null;
 
@@ -28,6 +29,10 @@ public class UIManager : MonoBehaviour
 	[SerializeField] Image ammoImage = null;
 
 	[SerializeField] Spawner obstacleSpawner = null;
+
+	[Header("Tutorial")]
+	[SerializeField] Image coreImage = null;
+	[SerializeField] Image consumableImage = null;
 
 	public void RetryButtonPressed()
 	{
@@ -53,9 +58,37 @@ public class UIManager : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
+	public void TutorialButtonPressed()
+	{
+		AudioManager.Instance.PlayButtonClick();
+		defaultScreen.SetActive(false);
+		tutorialScreen.SetActive(true);
+	}
+
+	public void TutorialButtonExit()
+	{
+		AudioManager.Instance.PlayButtonClick();
+		tutorialScreen.SetActive(false);
+		defaultScreen.SetActive(true);
+	}
+
+	public void TutorialChangeImage()
+	{
+		AudioManager.Instance.PlayButtonClick();
+
+		if (coreImage.gameObject.activeInHierarchy)
+		{
+			coreImage.gameObject.SetActive(false);
+			consumableImage.gameObject.SetActive(true);
+		}else
+		{
+			consumableImage.gameObject.SetActive(false);
+			coreImage.gameObject.SetActive(true);
+		}
+	}
+
 	public void OptionsButtonPressed()
 	{
-		//AudioManager.Instance.SetSliderValues();
 		AudioManager.Instance.PlayButtonClick();
 		defaultScreen.SetActive(false);
 		optionsScreen.SetActive(true);
@@ -63,7 +96,6 @@ public class UIManager : MonoBehaviour
 
 	public void OptionsButtonExit()
 	{
-		//AudioManager.Instance.SaveSliderValues();
 		AudioManager.Instance.PlayButtonClick();
 		optionsScreen.SetActive(false);
 		defaultScreen.SetActive(true);

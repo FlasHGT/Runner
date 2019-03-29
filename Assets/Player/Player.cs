@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
 					break;
 				case ConsumableType.AddHP:
 					collision.gameObject.SetActive(false);
-					health += 5;
+					health += 10;
 					consumable.needsReset = true;
 					break;
 				case ConsumableType.AddAmmo:
