@@ -48,19 +48,8 @@ public class GameManager : MonoBehaviour
 		if (Player.Instance)
 		{
 			float playerSpeed = Player.Instance.speed;
-			if (Player.Instance.transform.position.y > 1000f)
-			{
-				playerSpeed += 4f;
-			}
-			else if (Player.Instance.transform.position.y > 750f)
-			{
-				playerSpeed += 3f;
-			}
-			else if (Player.Instance.transform.position.y > 500f)
-			{
-				playerSpeed += 2f;
-			}
-			else if (Player.Instance.transform.position.y > 250f)
+
+			for (int i = 250; i < Player.Instance.transform.position.y; i += 250)
 			{
 				playerSpeed += 1f;
 			}
