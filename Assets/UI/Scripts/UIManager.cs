@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
 	{
 		AudioManager.Instance.PlayButtonClick();
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+		AudioManager.Instance.hasVisitedMainMenu = true;
 	}
 
 	public void StartButtonPressed()

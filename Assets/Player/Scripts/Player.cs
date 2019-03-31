@@ -13,11 +13,6 @@ public class Player : MonoBehaviour
 	public bool mobileInput = false;
 	public bool isInvincible = false;
 
-	[SerializeField] AudioSource audioSource = null;
-
-	[SerializeField] AudioClip[] shootClips = null;
-	[SerializeField] AudioClip playerDeathClip = null;
-
 	[SerializeField] Sprite defaultSprite = null;
 	[SerializeField] Sprite[] armorLayers = null;
 
@@ -31,6 +26,26 @@ public class Player : MonoBehaviour
 	[SerializeField] GameObject projectile = null;
 
 	private SpriteRenderer sR = null;
+
+	public void Death()
+	{
+		enginePS.Stop();
+		sR.enabled = false;
+
+		fireGO.transform.rotation = Quaternion.identity;
+		smokeGO.transform.rotation = Quaternion.identity;
+		lightGO.transform.rotation = Quaternion.identity;
+		shrapnelGO.transform.rotation = Quaternion.identity;
+
+		fireGO.SetActive(true);
+		smokeGO.SetActive(true);
+		lightGO.SetActive(true);
+		shrapnelGO.SetActive(true);
+
+		GetComponent<Animator>().enabled = true;
+
+		AudioManager.Instance.PlayDeathSound();
+	}
 
 	private void Awake()
 	{
@@ -49,7 +64,7 @@ public class Player : MonoBehaviour
 
 	// Update is called once per frame
 	private void FixedUpdate()
-	{ 
+	{
 		if (transform.position.x >= 21f || transform.position.x <= -21f)
 		{
 			Death();
@@ -92,26 +107,6 @@ public class Player : MonoBehaviour
 		{
 			sR.sprite = defaultSprite;	
 		}
-	}
-
-	private void Death()
-	{
-		enginePS.Stop();
-		sR.enabled = false;
-
-		fireGO.transform.rotation = Quaternion.identity;
-		smokeGO.transform.rotation = Quaternion.identity;
-		lightGO.transform.rotation = Quaternion.identity;
-		shrapnelGO.transform.rotation = Quaternion.identity;
-
-		fireGO.SetActive(true);
-		smokeGO.SetActive(true);
-		lightGO.SetActive(true);
-		shrapnelGO.SetActive(true);
-
-		GetComponent<Animator>().enabled = true;
-		audioSource.clip = playerDeathClip;
-		audioSource.Play();
 	}
 
 	private void Move()
@@ -161,8 +156,7 @@ public class Player : MonoBehaviour
 			ammoCount -= 2f;
 			Instantiate(projectile, transform.position, Quaternion.identity);
 
-			audioSource.clip = shootClips[Random.Range(0, shootClips.Length)];
-			audioSource.Play();
+			AudioManager.Instance.PlayProjectileShot();
 		}
 	}
 

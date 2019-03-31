@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,10 @@ public class GameManager : MonoBehaviour
 	public bool gamePaused = false;
 	public bool retryButtonPressed = false;
 
+	public Slider afxSlider = null;
+	public Slider musicSlider = null;
+	public Slider uiSlider = null;
+
 	public void ResetGame()
 	{
 		gamePaused = true;
@@ -17,11 +22,11 @@ public class GameManager : MonoBehaviour
 
 		if (retryButtonPressed)
 		{
-			gamePaused = false;
+			UIManager.Instance.loseScreen.SetActive(false);
 			int i = SceneManager.GetActiveScene().buildIndex;
 			SceneManager.LoadScene(i);
 			retryButtonPressed = false;
-			UIManager.Instance.loseScreen.SetActive(false);
+			gamePaused = false;
 		}
 	}
 
@@ -40,10 +45,10 @@ public class GameManager : MonoBehaviour
 			ResetGame();
 		}
 
-		if (Player.Instance != null)
+		if (Player.Instance)
 		{
 			float playerSpeed = Player.Instance.speed;
-			if(Player.Instance.transform.position.y > 1000f)
+			if (Player.Instance.transform.position.y > 1000f)
 			{
 				playerSpeed += 4f;
 			}
@@ -61,7 +66,8 @@ public class GameManager : MonoBehaviour
 			}
 
 			realTimeSpeed = playerSpeed * Time.fixedDeltaTime;
-		}else
+		}
+		else
 		{
 			realTimeSpeed = 2f * Time.fixedDeltaTime;
 		}

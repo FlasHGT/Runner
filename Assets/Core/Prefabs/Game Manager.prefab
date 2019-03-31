@@ -46,25 +46,6 @@ MonoBehaviour:
   realTimeSpeed: 0
   gamePaused: 0
   retryButtonPressed: 0
-  quotes:
-  - The Universe is under no obligation to make sense to you - Neil deGrasse Tyson
-  - It is difficult to understand the universe if you only study one planet - Miyamoto
-    musashi
-  - Sometimes you have to go up really high to understand how small you really are
-    - Felix Baumgartner
-  - I don't think the human race will survive the next thousand years unless we spread
-    into space - Stephen Hawking
-  - Intelligence is the ability to adapt to change - Stephen Hawking
-  mainMenuAudioClips:
-  - {fileID: 8300000, guid: 58de4ecf37604ee43af58f5bfeff43e3, type: 3}
-  - {fileID: 8300000, guid: eb0b6f860c607744197f01c226f9cd18, type: 3}
-  defaultScreen: {fileID: 0}
-  optionsScreen: {fileID: 0}
-  quoteText: {fileID: 0}
-  buttonAudioSource: {fileID: 0}
-  musicAudioSource: {fileID: 0}
-  scoreText: {fileID: 0}
-  healthImage: {fileID: 0}
-  armorImage: {fileID: 0}
-  obstacleSpawner: {fileID: 0}
-  loseScreen: {fileID: 0}
+  afxSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  uiSlider: {fileID: 0}
