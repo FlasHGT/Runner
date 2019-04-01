@@ -54,9 +54,9 @@ public class Consumable : MonoBehaviour
 
 	private void PointConsumableArrow()
 	{
-		if (transform.position.y - Player.Instance.transform.position.y <= 35f && transform.position.y - Player.Instance.transform.position.y >= 5f)
+		if (transform.position.y - Player.Instance.transform.position.y <= 35f && transform.position.y - Player.Instance.transform.position.y >= 5f && !GameManager.Instance.gamePaused)
 		{
-			if(!arrow.activeInHierarchy)
+			if (!arrow.activeInHierarchy)
 			{
 				arrow.SetActive(true);
 			}

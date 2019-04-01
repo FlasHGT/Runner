@@ -59,7 +59,7 @@ public class Obstacle : MonoBehaviour
 				AudioManager.Instance.PlayHitByPlayerArmor();
 			}
 		}
-		else
+		else if(!collision.gameObject.CompareTag("MainCamera"))
 		{
 			AudioManager.Instance.PlayHitInvincible();
 		}

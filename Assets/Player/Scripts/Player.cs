@@ -65,12 +65,6 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
-		if (transform.position.x >= 21f || transform.position.x <= -21f)
-		{
-			Death();
-			GameManager.Instance.ResetGame();
-		}
-
 		if (health <= 0f)
 		{
 			Death();
@@ -151,7 +145,12 @@ public class Player : MonoBehaviour
 
 	private void Shoot()
 	{
-		if(Input.GetKeyDown(KeyCode.Space) && ammoCount != 0f)
+		if(ammoCount > 10)
+		{
+			ammoCount = 10;
+		}
+
+		if(Input.GetKeyUp(KeyCode.Space) && ammoCount != 0f)
 		{
 			ammoCount -= 2f;
 			Instantiate(projectile, transform.position, Quaternion.identity);
@@ -175,6 +174,10 @@ public class Player : MonoBehaviour
 				case ConsumableType.AddArmor:
 					collision.gameObject.SetActive(false);
 					armorCount = 10f;
+					if(armorCount > 10f)
+					{
+						armorCount = 10f;
+					}
 					consumable.needsReset = true;
 					break;
 				case ConsumableType.AddHP:
@@ -191,6 +194,15 @@ public class Player : MonoBehaviour
 					Debug.Log("This is not a consumable");
 					break;
 			}
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if(collision.gameObject.CompareTag("MainCamera"))
+		{
+			Death();
+			GameManager.Instance.ResetGame();
 		}
 	}
 
