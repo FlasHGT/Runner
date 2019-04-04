@@ -429,9 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b6c9a62d5eb2d40ba5edef63e9ea2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  afxSlider: {fileID: 0}
-  musicSlider: {fileID: 0}
-  uiSlider: {fileID: 0}
+  hasVisitedMainMenu: 0
   uiSource: {fileID: 7260422148871475402}
   musicSource: {fileID: 7260422149699337826}
   obstacleSource: {fileID: 7260422149466354291}

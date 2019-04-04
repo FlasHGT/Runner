@@ -42,9 +42,8 @@ public class Player : MonoBehaviour
 		lightGO.SetActive(true);
 		shrapnelGO.SetActive(true);
 
-		GetComponent<Animator>().enabled = true;
-
 		AudioManager.Instance.PlayDeathSound();
+		GetComponent<Animator>().enabled = true;
 	}
 
 	private void Awake()
@@ -67,8 +66,11 @@ public class Player : MonoBehaviour
 	{
 		if (health <= 0f)
 		{
-			Death();
-			GameManager.Instance.ResetGame();
+			if(!GameManager.Instance.gamePaused)
+			{
+				Death();
+				GameManager.Instance.ResetGame();
+			}
 		}
 		else if (health > 10f)
 		{

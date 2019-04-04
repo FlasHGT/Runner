@@ -4285,25 +4285,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6544828589119416127, guid: 9306515f3805b624f886b085d504b2e8,
-        type: 3}
-      propertyPath: afxSlider
-      value: 
-      objectReference: {fileID: 1510693908}
-    - target: {fileID: 6544828589119416127, guid: 9306515f3805b624f886b085d504b2e8,
-        type: 3}
-      propertyPath: musicSlider
-      value: 
-      objectReference: {fileID: 1934966653}
-    - target: {fileID: 6544828589119416127, guid: 9306515f3805b624f886b085d504b2e8,
-        type: 3}
-      propertyPath: uiSlider
-      value: 
-      objectReference: {fileID: 168351078}
-    - target: {fileID: 6544828589119416127, guid: 9306515f3805b624f886b085d504b2e8,
-        type: 3}
-      propertyPath: playerDeathClip
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9306515f3805b624f886b085d504b2e8, type: 3}
