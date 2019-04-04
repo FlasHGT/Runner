@@ -30,11 +30,29 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	public void SetSliderValues()
+	{
+		AudioManager.Instance.SetSliderValues();
+	}
+
+	public void GetSliderValues()
+	{
+		AudioManager.Instance.GetSlidersValues();
+	}
+
 	private void Awake()
 	{
 		if(!Instance)
 		{
 			Instance = this;
+		}
+	}
+
+	private void Start()
+	{
+		if (SceneManager.GetActiveScene().buildIndex == 0)
+		{
+			SetSliderValues();
 		}
 	}
 

@@ -35,9 +35,6 @@ public class AudioManager : MonoBehaviour
 		PlayerPrefs.SetFloat("uiSlider", GameManager.Instance.uiSlider.value);
 		PlayerPrefs.SetFloat("musicSlider", GameManager.Instance.musicSlider.value);
 		PlayerPrefs.SetFloat("afxSlider", GameManager.Instance.afxSlider.value);
-		print(PlayerPrefs.GetFloat("uiSlider"));
-		print(PlayerPrefs.GetFloat("musicSlider"));
-		print(PlayerPrefs.GetFloat("afxSlider"));
 	}
 
 	public void SetSliderValues()
