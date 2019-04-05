@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
 	[SerializeField] GameObject projectile = null;
 
 	private SpriteRenderer sR = null;
+	private Color tmp;
+
+	private bool hasCalled = false;
 
 	public void Death()
 	{
@@ -66,10 +69,11 @@ public class Player : MonoBehaviour
 	{
 		if (health <= 0f)
 		{
-			if(!GameManager.Instance.gamePaused)
+			if(!hasCalled)
 			{
 				Death();
 				GameManager.Instance.ResetGame();
+				hasCalled = true;
 			}
 		}
 		else if (health > 10f)
@@ -208,13 +212,40 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	IEnumerator Invincible ()
+	private IEnumerator Blink()
 	{
-		isInvincible = true;
-		Color tmp = sR.color;
-		tmp.a = 0.5f;
+		for (int x = 0; x < 20; x++)
+		{
+			if (tmp.a == 0.25f)
+			{
+				tmp.a = 1f;
+			}
+			else
+			{
+				tmp.a = 0.25f;
+			}
+
+			if(x != 9)
+			{
+				sR.color = tmp;
+			}
+			else
+			{
+				tmp.a = 1.0f;
+				sR.color = tmp;
+			}
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
+
+	private IEnumerator Invincible ()
+	{
+		tmp = sR.color;
+		tmp.a = 0.25f;
 		sR.color = tmp;
-		yield return new WaitForSeconds(5);
+		isInvincible = true;
+		yield return new WaitForSeconds(3f);
+		StartCoroutine(Blink());
 		isInvincible = false;
 		tmp.a = 1f;
 		sR.color = tmp;
