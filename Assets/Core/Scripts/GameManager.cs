@@ -40,6 +40,16 @@ public class GameManager : MonoBehaviour
 		AudioManager.Instance.GetSlidersValues();
 	}
 
+	public void PlayDeathSound()
+	{
+		AudioManager.Instance.PlayDeathSound();
+	}
+
+	public void PlayUISound ()
+	{
+		AudioManager.Instance.PlayButtonClick();
+	}
+
 	private void Awake()
 	{
 		if(!Instance)
