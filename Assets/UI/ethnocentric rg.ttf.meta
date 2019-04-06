@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 0d3dd2be820183a4697a0cc91e456e06
+guid: 0d8a76424714a2544b276d64b4a5f9c2
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 16
-  forceTextureCase: -2
+  fontSize: 300
+  forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Electronic Highway Sign
+  fontName: Ethnocentric
   fontNames:
-  - Electronic Highway Sign
+  - Ethnocentric
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
