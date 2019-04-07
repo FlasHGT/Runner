@@ -156,12 +156,31 @@ public class Player : MonoBehaviour
 			ammoCount = 10;
 		}
 
-		if(Input.GetKeyUp(KeyCode.Space) && ammoCount != 0f)
+		if(mobileInput)
 		{
-			ammoCount -= 2f;
-			Instantiate(projectile, transform.position, Quaternion.identity);
+			if(Input.touchCount == 2 && ammoCount != 0f)
+			{
+				Touch touch1 = Input.GetTouch(0);
+				Touch touch2 = Input.GetTouch(1);
 
-			AudioManager.Instance.PlayProjectileShot();
+				if(touch1.position.x < 0 && touch2.position.x > 0 || touch1.position.x > 0 && touch2.position.x < 0)
+				{
+					ammoCount -= 2f;
+					Instantiate(projectile, transform.position, Quaternion.identity);
+
+					AudioManager.Instance.PlayProjectileShot();
+				}
+			}
+		}
+		else
+		{
+			if (Input.GetKeyUp(KeyCode.Space) && ammoCount != 0f)
+			{
+				ammoCount -= 2f;
+				Instantiate(projectile, transform.position, Quaternion.identity);
+
+				AudioManager.Instance.PlayProjectileShot();
+			}
 		}
 	}
 
@@ -225,12 +244,13 @@ public class Player : MonoBehaviour
 				tmp.a = 0.25f;
 			}
 
-			if(x != 9)
+			if(x != 19)
 			{
 				sR.color = tmp;
 			}
 			else
 			{
+				isInvincible = false;
 				tmp.a = 1.0f;
 				sR.color = tmp;
 			}
@@ -246,8 +266,5 @@ public class Player : MonoBehaviour
 		isInvincible = true;
 		yield return new WaitForSeconds(3f);
 		StartCoroutine(Blink());
-		isInvincible = false;
-		tmp.a = 1f;
-		sR.color = tmp;
 	}
 }
