@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] GameObject defaultScreen = null;
 	[SerializeField] GameObject optionsScreen = null;
 	[SerializeField] GameObject tutorialScreen = null;
+	[SerializeField] GameObject leaderboardScreen = null;
 
 	[SerializeField] Text quoteText = null;
 
@@ -41,6 +42,20 @@ public class UIManager : MonoBehaviour
 	{
 		AudioManager.Instance.PlayButtonClick();
 		Application.Quit();
+	}
+
+	public void LeaderboardButtonPressed ()
+	{
+		AudioManager.Instance.PlayButtonClick();
+		defaultScreen.SetActive(false);
+		leaderboardScreen.SetActive(true);
+	}
+
+	public void LeaderboardButtonExit()
+	{
+		AudioManager.Instance.PlayButtonClick();
+		leaderboardScreen.SetActive(false);
+		defaultScreen.SetActive(true);
 	}
 
 	public void MainMenuButtonPressed()
