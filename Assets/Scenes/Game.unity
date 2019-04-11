@@ -2540,5 +2540,10 @@ PrefabInstance:
       propertyPath: mobileInput
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: isInvincible
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9606952ae87757f4f9070d2b53744f2d, type: 3}

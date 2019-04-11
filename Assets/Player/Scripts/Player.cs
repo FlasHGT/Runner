@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
 
 	[SerializeField] GameObject projectile = null;
 
+	private float currentTime;
+	private float reloadTime = 0.5f;
+
 	private SpriteRenderer sR = null;
 	private Color tmp;
 
@@ -156,15 +159,22 @@ public class Player : MonoBehaviour
 			ammoCount = 10;
 		}
 
-		if(mobileInput)
+		if(mobileInput && ammoCount != 0f)
 		{
-			if(Input.touchCount == 2 && ammoCount != 0f)
-			{
-				Touch touch1 = Input.GetTouch(0);
-				Touch touch2 = Input.GetTouch(1);
+			Touch[] myTouches = Input.touches;
 
-				if(touch1.position.x < 0 && touch2.position.x > 0 || touch1.position.x > 0 && touch2.position.x < 0)
+			if(myTouches.Length == 2)
+			{
+				Touch touch0 = myTouches[0];
+				Touch touch1 = myTouches[1];
+
+				Vector3 touch0Pos = Camera.main.ScreenToWorldPoint(touch0.position);
+				Vector3 touch1Pos = Camera.main.ScreenToWorldPoint(touch1.position);
+
+				if ((touch0Pos.x < 0 && touch1Pos.x > 0 || touch0Pos.x > 0 && touch1Pos.x < 0) && currentTime + reloadTime < Time.time)
 				{
+					currentTime = Time.time;
+
 					ammoCount -= 2f;
 					Instantiate(projectile, transform.position, Quaternion.identity);
 
@@ -172,10 +182,12 @@ public class Player : MonoBehaviour
 				}
 			}
 		}
-		else
+		else if(ammoCount != 0f)
 		{
-			if (Input.GetKeyUp(KeyCode.Space) && ammoCount != 0f)
+			if (Input.GetKeyUp(KeyCode.Space) && currentTime + reloadTime < Time.time)
 			{
+				currentTime = Time.time;
+
 				ammoCount -= 2f;
 				Instantiate(projectile, transform.position, Quaternion.identity);
 
