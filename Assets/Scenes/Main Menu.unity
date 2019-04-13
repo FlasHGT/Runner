@@ -182,7 +182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: Space rUnner
+  m_Text: Spaflash
 --- !u!222 &14954880
 CanvasRenderer:
   m_ObjectHideFlags: 0
