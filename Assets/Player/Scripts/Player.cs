@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
 	public float armorCount = 10f;
 	public float ammoCount = 0f;
 
-	public bool mobileInput = false;
 	public bool isInvincible = false;
 
 	[SerializeField] Sprite defaultSprite = null;
@@ -117,7 +116,7 @@ public class Player : MonoBehaviour
 		transform.position = new Vector3(transform.position.x, transform.position.y, -3f);
 		transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
-		if(mobileInput)
+		if(GameManager.Instance.mobileInput)
 		{
 			if (Input.touchCount > 0)
 			{
@@ -159,7 +158,7 @@ public class Player : MonoBehaviour
 			ammoCount = 10;
 		}
 
-		if(mobileInput && ammoCount != 0f)
+		if(GameManager.Instance.mobileInput && ammoCount != 0f)
 		{
 			Touch[] myTouches = Input.touches;
 

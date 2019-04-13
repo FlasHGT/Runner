@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
 	public float realTimeSpeed;
 
+	public bool mobileInput = false;
 	public bool gamePaused = false;
 	public bool retryButtonPressed = false;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 	{
 		gamePaused = true;
 		UIManager.Instance.loseScreen.SetActive(true);
+		PlayGamesController.Instance.PostToLeaderboard(long.Parse(Player.Instance.transform.position.y.ToString("f0")));
 
 		if (retryButtonPressed)
 		{
@@ -28,6 +30,16 @@ public class GameManager : MonoBehaviour
 			retryButtonPressed = false;
 			gamePaused = false;
 		}
+	}
+
+	public void AuthenticateUser()
+	{
+		PlayGamesController.Instance.AuthenticateUser();
+	}
+
+	public void ShowLeaderboardUI()
+	{
+		PlayGamesController.Instance.ShowLeaderboardUI();
 	}
 
 	public void SetSliderValues()

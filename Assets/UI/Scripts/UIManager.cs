@@ -47,15 +47,6 @@ public class UIManager : MonoBehaviour
 	public void LeaderboardButtonPressed ()
 	{
 		AudioManager.Instance.PlayButtonClick();
-		defaultScreen.SetActive(false);
-		leaderboardScreen.SetActive(true);
-	}
-
-	public void LeaderboardButtonExit()
-	{
-		AudioManager.Instance.PlayButtonClick();
-		leaderboardScreen.SetActive(false);
-		defaultScreen.SetActive(true);
 	}
 
 	public void MainMenuButtonPressed()
@@ -124,8 +115,7 @@ public class UIManager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-
-		if (scoreText != null && armorImage != null && healthImage != null)
+		if (scoreText != null && armorImage != null && healthImage != null && ammoImage != null)
 		{
 			if (Player.Instance.transform.position.y >= 0f)
 			{

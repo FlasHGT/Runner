@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
 
 	public void SetSliderValues()
 	{
-		if(hasVisitedMainMenu)
+		if(hasVisitedMainMenu && !GameManager.Instance.mobileInput)
 		{
 			GameManager.Instance.uiSlider.value = PlayerPrefs.GetFloat("uiSlider");
 			GameManager.Instance.musicSlider.value = PlayerPrefs.GetFloat("musicSlider");
