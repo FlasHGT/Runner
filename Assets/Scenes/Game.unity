@@ -337,7 +337,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 139131998}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8289269065452853326}
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &139131998
@@ -797,7 +808,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 530112013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8289269065452853326}
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &530112013
@@ -2778,6 +2800,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
         type: 3}
+      propertyPath: shootButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: shootButton.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
       propertyPath: mobileInput
       value: 1
       objectReference: {fileID: 0}
@@ -2786,5 +2818,37 @@ PrefabInstance:
       propertyPath: isInvincible
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: shootButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 139131997}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: shootButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 530112012}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: shootButton.Array.data[0]
+      value: 
+      objectReference: {fileID: 139131997}
+    - target: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+        type: 3}
+      propertyPath: shootButton.Array.data[1]
+      value: 
+      objectReference: {fileID: 530112012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9606952ae87757f4f9070d2b53744f2d, type: 3}
+--- !u!114 &8289269065452853326 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8289269065699573624, guid: 9606952ae87757f4f9070d2b53744f2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8289269065452853325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8e0662cea74a549a7f1461e7f4c126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

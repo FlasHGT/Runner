@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -14,16 +16,15 @@ public class Player : MonoBehaviour
 
 	[SerializeField] Sprite defaultSprite = null;
 	[SerializeField] Sprite[] armorLayers = null;
-    [SerializeField] Sprite[] shootButtons = null;
-
 
 	[SerializeField] ParticleSystem enginePS = null;
+
+	[SerializeField] Button[] shootButtons = null;
 
 	[SerializeField] GameObject shrapnelGO = null;
 	[SerializeField] GameObject fireGO = null;
 	[SerializeField] GameObject smokeGO = null;
 	[SerializeField] GameObject lightGO = null;
-
 	[SerializeField] GameObject projectile = null;
 
 	private float currentTime;
@@ -51,6 +52,37 @@ public class Player : MonoBehaviour
 
 		AudioManager.Instance.PlayDeathSound();
 		GetComponent<Animator>().enabled = true;
+	}
+
+	public void Shoot()
+	{
+		if (!GameManager.Instance.gamePaused)
+		{
+			if (GameManager.Instance.mobileInput && ammoCount != 0f)
+			{
+				if (currentTime + reloadTime < Time.time)
+				{
+					currentTime = Time.time;
+
+					ammoCount -= 2f;
+					Instantiate(projectile, transform.position, Quaternion.identity);
+
+					AudioManager.Instance.PlayProjectileShot();
+				}
+			}
+			else if (ammoCount != 0f)
+			{
+				if (Input.GetKeyUp(KeyCode.Space) && currentTime + reloadTime < Time.time)
+				{
+					currentTime = Time.time;
+
+					ammoCount -= 2f;
+					Instantiate(projectile, transform.position, Quaternion.identity);
+
+					AudioManager.Instance.PlayProjectileShot();
+				}
+			}
+		}
 	}
 
 	private void Awake()
@@ -87,7 +119,30 @@ public class Player : MonoBehaviour
 
 		if (!GameManager.Instance.gamePaused)
 		{
-			Shoot();
+			if (ammoCount > 10)
+			{
+				ammoCount = 10;
+			}
+
+			if (ammoCount != 0f && !GameManager.Instance.gamePaused)
+			{
+                for (int x = 0; x < shootButtons.Length; x++)
+                {
+                    shootButtons[x].gameObject.SetActive(true);
+                }
+			}
+            else
+            {
+                for (int x = 0; x < shootButtons.Length; x++)
+                {
+                    shootButtons[x].gameObject.SetActive(false);
+                }
+            }
+
+			if(!GameManager.Instance.mobileInput)
+			{
+				Shoot();
+			}
 			Move();
 		}
 
@@ -120,22 +175,30 @@ public class Player : MonoBehaviour
 
 		if(GameManager.Instance.mobileInput)
 		{
-			if (Input.touchCount > 0)
-			{
-				Touch touch = Input.GetTouch(0);
-				Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+            foreach (Touch touch in Input.touches)
+            {
+                int id = touch.fingerId;
 
-				if (touchPos.x > 0)
-				{
-					transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
-					transform.Translate(GameManager.Instance.realTimeSpeed, 0f, 0f);
-				}
-				else if (touchPos.x < 0)
-				{
-					transform.localRotation = Quaternion.Euler(0f, -45f, 0f);
-					transform.Translate(-GameManager.Instance.realTimeSpeed, 0f, 0f);
-				}
-			}
+                if (!EventSystem.current.IsPointerOverGameObject(id))
+                {
+                    if (Input.touchCount > 0)
+                    {
+                        Touch currentTouch = Input.GetTouch(0);
+                        Vector3 touchPos = Camera.main.ScreenToWorldPoint(currentTouch.position);
+
+                        if (touchPos.x > 0)
+                        {
+                            transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
+                            transform.Translate(GameManager.Instance.realTimeSpeed, 0f, 0f);
+                        }
+                        else if (touchPos.x < 0)
+                        {
+                            transform.localRotation = Quaternion.Euler(0f, -45f, 0f);
+                            transform.Translate(-GameManager.Instance.realTimeSpeed, 0f, 0f);
+                        }
+                    }
+                }
+            }
 
 			transform.Translate(0f, GameManager.Instance.realTimeSpeed, 0f);
 		}else
@@ -150,50 +213,6 @@ public class Player : MonoBehaviour
 				transform.localRotation = Quaternion.Euler(0f, -45f, 0f);
 			}
 			transform.Translate(moveHorizontal * GameManager.Instance.realTimeSpeed, GameManager.Instance.realTimeSpeed, 0f);
-		}
-	}
-
-	private void Shoot()
-	{
-		if(ammoCount > 10)
-		{
-			ammoCount = 10;
-		}
-
-		if(GameManager.Instance.mobileInput && ammoCount != 0f)
-		{
-			Touch[] myTouches = Input.touches;
-
-			if(myTouches.Length == 2)
-			{
-				Touch touch0 = myTouches[0];
-				Touch touch1 = myTouches[1];
-
-				Vector3 touch0Pos = Camera.main.ScreenToWorldPoint(touch0.position);
-				Vector3 touch1Pos = Camera.main.ScreenToWorldPoint(touch1.position);
-
-				if ((touch0Pos.x < 0 && touch1Pos.x > 0 || touch0Pos.x > 0 && touch1Pos.x < 0) && currentTime + reloadTime < Time.time)
-				{
-					currentTime = Time.time;
-
-					ammoCount -= 2f;
-					Instantiate(projectile, transform.position, Quaternion.identity);
-
-					AudioManager.Instance.PlayProjectileShot();
-				}
-			}
-		}
-		else if(ammoCount != 0f)
-		{
-			if (Input.GetKeyUp(KeyCode.Space) && currentTime + reloadTime < Time.time)
-			{
-				currentTime = Time.time;
-
-				ammoCount -= 2f;
-				Instantiate(projectile, transform.position, Quaternion.identity);
-
-				AudioManager.Instance.PlayProjectileShot();
-			}
 		}
 	}
 
@@ -259,7 +278,7 @@ public class Player : MonoBehaviour
 
 			if(x != 19)
 			{
-				sR.color = tmp;
+	        	sR.color = tmp;
 			}
 			else
 			{
