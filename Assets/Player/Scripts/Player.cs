@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
 	[SerializeField] Sprite defaultSprite = null;
 	[SerializeField] Sprite[] armorLayers = null;
+    [SerializeField] Sprite[] shootButtons = null;
+
 
 	[SerializeField] ParticleSystem enginePS = null;
 
