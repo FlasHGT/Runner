@@ -66,6 +66,8 @@ public class Player : MonoBehaviour
 
 					ammoCount -= 2f;
 					Instantiate(projectile, transform.position, Quaternion.identity);
+					Instantiate(projectile, transform.position, Quaternion.Euler(0f, 0f, 15f));
+					Instantiate(projectile, transform.position, Quaternion.Euler(0f, 0f, -15f));
 
 					AudioManager.Instance.PlayProjectileShot();
 				}
@@ -78,6 +80,8 @@ public class Player : MonoBehaviour
 
 					ammoCount -= 2f;
 					Instantiate(projectile, transform.position, Quaternion.identity);
+					Instantiate(projectile, transform.position, Quaternion.Euler(0f, 0f, 15f));
+					Instantiate(projectile, transform.position, Quaternion.Euler(0f, 0f, -15f));
 
 					AudioManager.Instance.PlayProjectileShot();
 				}
@@ -124,20 +128,20 @@ public class Player : MonoBehaviour
 				ammoCount = 10;
 			}
 
-			if (ammoCount != 0f && !GameManager.Instance.gamePaused)
+			if (ammoCount != 0f && !GameManager.Instance.gamePaused && GameManager.Instance.mobileInput)
 			{
-                for (int x = 0; x < shootButtons.Length; x++)
-                {
-                    shootButtons[x].gameObject.SetActive(true);
-                }
+				for (int x = 0; x < shootButtons.Length; x++)
+				{
+					shootButtons[x].gameObject.SetActive(true);
+				}
 			}
-            else
-            {
-                for (int x = 0; x < shootButtons.Length; x++)
-                {
-                    shootButtons[x].gameObject.SetActive(false);
-                }
-            }
+			else
+			{
+				for (int x = 0; x < shootButtons.Length; x++)
+				{
+					shootButtons[x].gameObject.SetActive(false);
+				}
+			}
 
 			if(!GameManager.Instance.mobileInput)
 			{
@@ -164,7 +168,7 @@ public class Player : MonoBehaviour
 		}
 		else if (armorCount == 0f)
 		{
-			sR.sprite = defaultSprite;	
+			sR.sprite = defaultSprite;
 		}
 	}
 
@@ -175,30 +179,30 @@ public class Player : MonoBehaviour
 
 		if(GameManager.Instance.mobileInput)
 		{
-            foreach (Touch touch in Input.touches)
-            {
-                int id = touch.fingerId;
+			foreach (Touch touch in Input.touches)
+			{
+				int id = touch.fingerId;
 
-                if (!EventSystem.current.IsPointerOverGameObject(id))
-                {
-                    if (Input.touchCount > 0)
-                    {
-                        Touch currentTouch = Input.GetTouch(0);
-                        Vector3 touchPos = Camera.main.ScreenToWorldPoint(currentTouch.position);
+				if (!EventSystem.current.IsPointerOverGameObject(id))
+				{
+					if (Input.touchCount > 0)
+					{
+						Touch currentTouch = Input.GetTouch(0);
+						Vector3 touchPos = Camera.main.ScreenToWorldPoint(currentTouch.position);
 
-                        if (touchPos.x > 0)
-                        {
-                            transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
-                            transform.Translate(GameManager.Instance.realTimeSpeed, 0f, 0f);
-                        }
-                        else if (touchPos.x < 0)
-                        {
-                            transform.localRotation = Quaternion.Euler(0f, -45f, 0f);
-                            transform.Translate(-GameManager.Instance.realTimeSpeed, 0f, 0f);
-                        }
-                    }
-                }
-            }
+						if (touchPos.x > 0)
+						{
+							transform.localRotation = Quaternion.Euler(0f, 45f, 0f);
+							transform.Translate(GameManager.Instance.realTimeSpeed, 0f, 0f);
+						}
+						else if (touchPos.x < 0)
+						{
+							transform.localRotation = Quaternion.Euler(0f, -45f, 0f);
+							transform.Translate(-GameManager.Instance.realTimeSpeed, 0f, 0f);
+						}
+					}
+				}
+			}
 
 			transform.Translate(0f, GameManager.Instance.realTimeSpeed, 0f);
 		}else
@@ -278,7 +282,7 @@ public class Player : MonoBehaviour
 
 			if(x != 19)
 			{
-	        	sR.color = tmp;
+				sR.color = tmp;
 			}
 			else
 			{
