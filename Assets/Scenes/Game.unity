@@ -2499,7 +2499,7 @@ PrefabInstance:
     - target: {fileID: 3265343534908439944, guid: c26963af2ad152c45a1265d37dbc2130,
         type: 3}
       propertyPath: mobileInput
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c26963af2ad152c45a1265d37dbc2130, type: 3}
