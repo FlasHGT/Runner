@@ -6,4 +6,5 @@
     <li>Create UI elements using Adobe Photoshop</li>
     <li>Use coroutines for special abilities</li>
     <li>Implement object poolers</li>
+    <li>How to use enums and switch statements</li>
   </ul>
