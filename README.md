@@ -3,9 +3,9 @@ Spaflash is a never-ending experience, the further you get the harder the challe
 # <a href="https://trello.com/b/cvaJMUgi/spaflash" target="_blank">Task Board</a>
 # What I Learned
   <ul>
-    <li>Create pixel art using Adobe Photoshop</li>
-    <li>Create UI elements using Adobe Photoshop</li>
-    <li>Use coroutines for special abilities</li>
-    <li>Implement object poolers</li>
+    <li>Create pixel art and UI elements using Adobe Photoshop</li>
+    <li>Improved understanding of coroutines</li>
+    <li>How to implement object poolers</li>
     <li>How to use enums and switch statements</li>
+    <li>How to build a Unity project from the ground up</li>
   </ul>
